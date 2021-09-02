@@ -12,19 +12,19 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 3. Apabila kita menerapkannya di Fragment, gunakan FragmentActivity
 4. kita dapat menggunakan RecyclerView.Adapter sebagai adapter. Hal ini karena pada dasarnya ViewPager2 dibuat menggunakan RecyclerView
  */
-class SectionsPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activity){
+class SectionsPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 
     /*
     Fungsi createFragment digunakan untuk menampilkan fragment sesuai dengan posisi tab-nya
      */
     override fun createFragment(position: Int): Fragment {
-        var fragment: Fragment? = null
-        when(position){
-            // klik/swipe -> move fragment
-            0 -> fragment = HomeFragment()
-            1 -> fragment = ProfileFragment()
-        }
-        return fragment as Fragment
+//        var fragment: Fragment? = null
+//        when(position){
+//            // klik/swipe -> move fragment
+//            0 -> fragment = HomeFragment()
+//            1 -> fragment = ProfileFragment()
+//        }
+        return HomeFragment.newInstance(position + 1) // mengirim data posisi, +1 karena position mulai dari 0
     }
 
     /*
@@ -33,7 +33,7 @@ class SectionsPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(
     kalau ngga maka error
      */
     override fun getItemCount(): Int {
-        return 2
+        return 3
     }
 
 }
